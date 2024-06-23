@@ -16,10 +16,26 @@ export const getCurrentDateTime = () => {
     return { dayOfMonth, month, year, dayOfWeek, hours, minutes };
 };
 
-// export const windDirection = (degrees) => {
-//     if (degrees >= 0 && degrees <= 45) {
-//         return '&#8599;';
-//     } else if (degrees > 45 && degrees <= 90) {
-//         return '';
-//     }
-// };
+export const getWindDirection = (degrees) => {
+    const directions = ['&#8593', '&#8598', '&#8592', '&#8601', '&#8595', '&#8600', '&#8594', '&#8599'];
+
+    const i = Math.round(degrees / 45) % 8;
+
+    return directions[i];
+};
+
+export const calculateDefPoint = (temp, humidity) => {
+    const a = 17.27;
+    const b = 237.7;
+
+    const ft = (a * temp) / (b + temp) + Math.log(humidity / 100);
+    const dewPoint = (b * ft) / (a - ft);
+
+    return dewPoint.toFixed(1);
+};
+
+export const convertPressure = (pressure) => {
+    const mmHg = pressure * 0.750063755419211;
+
+    return mmHg.toFixed(0);
+};
