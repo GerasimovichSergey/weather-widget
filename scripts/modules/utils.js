@@ -1,10 +1,4 @@
-const addZeroToTime = (time) => {
-    if (time < 10) {
-        time = `0${time}`;
-    }
-
-    return time;
-};
+const addZeroToTime = (time) => time < 10 ? `0${time}` : time;
 
 export const getCurrentDateTime = () => {
     const months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
@@ -21,3 +15,11 @@ export const getCurrentDateTime = () => {
 
     return { dayOfMonth, month, year, dayOfWeek, hours, minutes };
 };
+
+// export const windDirection = (degrees) => {
+//     if (degrees >= 0 && degrees <= 45) {
+//         return '&#8599;';
+//     } else if (degrees > 45 && degrees <= 90) {
+//         return '';
+//     }
+// };
