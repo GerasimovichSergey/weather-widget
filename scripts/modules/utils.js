@@ -35,8 +35,7 @@ export const convertPressure = (pressure) => {
 export const getWeatherForecast = (data) => {
     const forecast = data.list.filter((item) =>
         new Date(item.dt_txt).getHours() === 12 &&
-        new Date(item.dt_txt).getDate() > new Date().getDate() &&
-        new Date(item.dt_txt).getDate() < new Date().getDate() + 5,
+        new Date(item.dt_txt).getDate() >= new Date().getDate()
     );
 
     const forecastData = forecast.map((item) => {
